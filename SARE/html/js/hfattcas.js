@@ -449,6 +449,8 @@ $(document).ready(function () {
   
     checkTotals();
   };
+
+  $('#btnFattura').click()
 });
 
 function reset() {
@@ -549,6 +551,9 @@ function openSwalWFrame(tipo, btn) {
   } else if (tipo === "ristampa") {
     iframeSrc = `/webdorecap/hristsco.cgi?vuserid=${vuserid}`;
     title = "Ristampa Scontrino";
+  }else if(tipo === "testata"){
+    iframeSrc = `/webdorecap/htesdocu.cgi?vuserid=${vuserid}`;
+    title = "Testata"
   } else if (tipo === "cauzioni") {
     iframeSrc = `/webdorecap/hmovicau.cgi?vuserid=${vuserid}&vnumreg=${numreg}`;
     title = "Cauzioni Cliente";
@@ -630,13 +635,13 @@ function openSwalWFrame(tipo, btn) {
         sessionStorage.removeItem("cardNum");
       }
 
-      const isScontrinoOnEvidence = $("#btnScontrino").hasClass("onEvidence");
+      const isTestataOnEvidence = $("#btnTestata").hasClass("onEvidence");
 
       // Controllo per la fattura
-      if (isScontrinoOnEvidence && tipo === "fattura") {
+      if (isTestataOnEvidence && tipo === "fattura") {
         popup(
           "Nessun cliente selezionato per la fattura!",
-          "Ripristino mod. scontrino"
+          "Ripristino mod. Testata"
         );
         return;
       }
@@ -692,12 +697,12 @@ function closeFrameFattura(codCliente, descrCliente) {
         // Show the client string
         $("#clienteStringa, #couponStringa").removeClass("d-none");
 
-        // Configure the Scontrino button
-        $("#btnScontrino")
+        // Configure the Testata button
+        $("#btnFattura")
           .attr("disabled", true)
           .removeClass("btn-success onEvidence");
 
-        $("#btnFattura").addClass("onEvidence");
+        $("#btnTestata").addClass("onEvidence");
 
         // Close the SweetAlert
         Swal.close();
