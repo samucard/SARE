@@ -1,0 +1,60 @@
+<input type="hidden" name="codPag" id="codPag"  value="502">
+
+<div class="container justify-content-center mt-2 d-block" id="divContanti">
+    <div class="row mb-4">
+        <button type="button" onclick="pannelloContanti($(this))" class="col-md btn btn-success contanti cent5" id="0.05">
+        </button>
+        <button type="button" onclick="pannelloContanti($(this))" class="col-md btn btn-success contanti cent10" id="0.10">
+        </button>
+        <button type="button" onclick="pannelloContanti($(this))" class="col-md btn btn-success contanti cent20" id="0.20">
+        </button>
+        <button type="button" onclick="pannelloContanti($(this))" class="col-md btn btn-success contanti cent50" id="0.50">
+        </button>
+        <button type="button" onclick="pannelloContanti($(this))" class="col-md btn btn-success contanti euro1" id="1">
+        </button>
+        <button type="button" onclick="pannelloContanti($(this))" class="col-md btn btn-success contanti euro2" id="2">
+        </button>
+    </div>
+    <div class="row mb-4">
+        <button type="button" onclick="pannelloContanti($(this))" class="col-md btn btn-success contanti euro5" id="5">
+        </button>
+        <button type="button" onclick="pannelloContanti($(this))" class="col-md btn btn-success contanti euro10" id="10">
+        </button>
+        <button type="button" onclick="pannelloContanti($(this))" class="col-md btn btn-success contanti euro20" id="20">
+        </button>
+        <button type="button" onclick="pannelloContanti($(this))" class="col-md btn btn-success contanti euro50" id="50">
+        </button>
+        <button type="button" onclick="pannelloContanti($(this))" class="col-md btn btn-success contanti euro100" id="100">
+        </button>
+        <button type="button" onclick="pannelloContanti($(this))" class="col-md btn btn-success contanti euro200" id="200">
+        </button>
+    </div>
+</div>
+
+<div class="container d-block justify-content-center mt-3" id="divTotaleContanti">
+<div class="row justify-content-center align-items-center">
+    <div class="d-flex align-items-center justify-content-center">
+        <span class="mx-2 totSwal">Totale:</span>
+        <span class="fw-bolder totSwal" id="totalSwal">0.00</span>
+        <span class="totSwal">&euro;</span> <!-- Usa &euro; per il simbolo dell'euro -->
+    </div>
+    <div class="d-flex align-items-center justify-content-center mx-3">
+        <span class="mx-2 totContanti notValid">Totale Contanti:</span>
+        <span class="fw-bolder totContanti notValid" id="totalContanti">0.00</span>
+        <span class="totContanti notValid">&euro;</span> <!-- Usa &euro; per il simbolo dell'euro -->
+        <button class="btn btn-danger mx-3" onclick="resetContanti(true)">
+            <i class="fas fa-trash"></i>
+        </button>
+        </div>
+        <div class="d-flex align-items-center justify-content-center">
+            <span class="mx-2 totResto">Resto:</span>
+            <span class="fw-bolder totResto" id="totalResto">0.00</span>
+            <span class="totResto">&euro;</span> <!-- Usa &euro; per il simbolo dell'euro -->
+        </div>
+</div>
+<div class="row justify-content-center align-items-center mt-3" id="rowDocument">
+    <button class="btn btn-success" onclick="generateDocument(true)" id="documentBtn" disabled>
+        <i class="fas fa-file-alt"></i> Emetti documento
+      </button>
+</div>
+</div>

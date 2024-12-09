@@ -1,0 +1,152 @@
+.number-pad .btn {
+    margin-bottom: 10px;
+    font-size: xx-large;
+}
+
+.total-display {
+    font-weight: bold;
+}
+
+#tabella tbody td {
+    text-align: center;
+}
+
+#tabella_wrapper .dataTables_scrollHead .dataTables_scrollHeadInner th {
+    text-align: center;
+}
+
+#divTotale {
+    font-size: x-large;
+}
+
+#total,
+#totalContanti {
+    font-weight: bolder;
+}
+
+#dateTime{
+    position: sticky;
+    bottom: 0;
+}
+
+.totContanti,
+.totResto,
+.totSwal {
+    font-size: xx-large;
+}
+
+.valid {
+    color: green;
+}
+
+.notValid {
+    color: red;
+}
+
+button.contanti img {
+    width: 100%;
+    height: 100%;
+    object-fit: none;
+}
+
+.p-method,
+.p-method-ok {
+    font-size: medium;
+    height: 3.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fs-medium {
+    font-size: medium !important;
+}
+
+button:disabled {
+    background-color: darkgray !important;
+    color: white !important;
+}
+
+#documentBtn {
+    height: 5rem;
+    font-size: xx-large;
+}
+
+.contanti {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    padding: 0;
+    height: 10rem;
+    border: 4px solid black;
+    background-size: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.cent5 {
+    background-image: url('../images/euro/5cent.jpg');
+}
+
+.cent10 {
+    background-image: url('../images/euro/10cent.jpg');
+}
+
+.cent20 {
+    background-image: url('../images/euro/20cent.jpg');
+}
+
+.cent50 {
+    background-image: url('../images/euro/50cent.jpg');
+}
+
+.euro1 {
+    background-image: url('../images/euro/1euro.jpg');
+}
+
+.euro2 {
+    background-image: url('../images/euro/2euro.jpg');
+}
+
+.euro5 {
+    background-image: url('../images/euro/5euro.jpg');
+}
+
+.euro10 {
+    background-image: url('../images/euro/10euro.jpg');
+}
+
+.euro20 {
+    background-image: url('../images/euro/20euro.jpg');
+}
+
+.euro50 {
+    background-image: url('../images/euro/50euro.jpg');
+}
+
+.euro100 {
+    background-image: url('../images/euro/100euro.jpg');
+}
+
+.euro200 {
+    background-image: url('../images/euro/200euro.jpg');
+}
+
+#assegnoVal {
+    font-size: 2rem;
+}
+
+.custom-edit-popUp {
+    width: 45%;
+}
+
+.btn-func {
+    font-size: 0.8rem !important;
+}
+
+.onEvidence{
+    background-color: yellow !important;
+    color: black !important;
+}

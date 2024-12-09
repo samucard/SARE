@@ -1,0 +1,315 @@
+<as400>top                     **** START HTML
+Content-type: text/html
+Expires: Fri Jan 01 00:00:00 1999
+
+<HTML><HEAD>
+<!-- Jquery -->
+<link type="text/css"         href="/centaurdir/redmond/css/jquery-ui-1.8.17.custom.css" rel="stylesheet" />
+<script type="text/javascript" src="/centaurdir/jquery/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/centaurdir/jquery/js/jquery-ui-1.8.17.custom.min.js"></script>
+<!-- CIS -->
+<link rel="stylesheet" href="/centaurdir/html/stile_cis.css" media="screen" type="text/css">  
+<script type="text/javascript" src="/centaurdir/js2/title.js"></script>                    
+<script type="text/javascript" src="/centaurdir/js2/val_cis.js"></script>                  
+<script type="text/javascript" src="/centaurdir/js2/selid.js"></script>  
+</head>
+
+<body link="green" vlink="green" alink="green" onload=document.form_r.vfildes.focus()>
+
+<script>
+	$(function() {
+		// Tutti i tag button verranno considerati come dei pulsanti
+		$( "#filtra").button();
+	});
+</script>
+
+
+ <script type="text/javascript" defer="defer">                            
+  function cascadeSelect(parent, child){                                  
+    var childOptions = child.find('option:not(.static)');                 
+     child.data('options',childOptions);                                  
+    parent.change(function(){                                             
+  //alert('ciao'+this.value);                                             
+     childOptions.remove();                                               
+     child                                                                
+      .append(child.data('options').filter('.sub_' + this.value))         
+      .change();                                                          
+    })                                                                    
+                                                                          
+    childOptions.not('.static, .sub_' + parent.val()).remove();           
+                                                                          
+  }                                                                       
+                                                                          
+  $(function(){                                                           
+   cascadeForm = $('.cascadeTest');                                       
+   dipSelect = cascadeForm.find('.dipSelect');                            
+   subSelect = cascadeForm.find('.subSelect');                            
+   grpSelect = cascadeForm.find('.grpSelect');        
+                                                      
+   cascadeSelect(dipSelect, subSelect);               
+   cascadeSelect(subSelect, grpSelect);               
+  });                                                 
+ </script>                                            
+
+<div class='ui-widget-rettangolo ui-corner-all cascadeTest' style='padding:10px;'>
+<table border=0 width="100%"  valign=top>
+<tr>
+<td align=center valign=top>
+
+<form name=form_r method=post action="/webdorecap/hricarti.cgi">
+  <input type="hidden" name="vuserid"   value="/%Vuserid%/">                     
+  <input type="hidden" name="vpassword" value="/%Vpassword%/">                   
+
+<table width="100%" border=0 >
+<tr>
+<td align=right class="subtitolo">
+Descrizione:
+</td>
+<td align=left>
+<input type="text" name="vfildes" id="vfildes" size="20" maxlenght="49" value="/%Vfildes%/" onBlur="this.value=this.value.toUpperCase();" onkeyup="this.value=this.value.toUpperCase();">
+</td>
+</tr>
+<tr>
+<td align=right class="subtitolo">
+Sequenziale:
+</td>
+<td align=left>
+<input type="text" name="vfilseq" size="20" maxlenght="49" value="/%Vfilseq%/" onBlur="this.value=this.value.toUpperCase();" onkeyup="this.value=this.value.toUpperCase();">
+</td>
+</tr>
+<tr>
+<td align=right class="subtitolo">
+Comparto:
+</td>
+<td align=left>
+ <SELECT NAME=vcoddip style="width:200px; color: green; font-size:
+ 10px;font-family: verdana;padding: 4px;border-radius: 9px;" tabindex="2" class="chosen-select dipSelect">     
+ <OPTION VALUE="0" selected>Tutti</OPTION>                                                                               
+<as400>selcomp                                                                                                                
+ <OPTION VALUE="/%SCODcom%/" /%selected%/>/%SCODcom%/ /%SDEScom%/</OPTION>                                                            
+<as400>fincomp                                                                                                                
+ </SELECT>                                                                                                               
+</td>
+</tr>
+</table>
+
+</td>
+<td align=center  valign=top> 
+
+<table border=0 width="100%">
+<tr>
+<td align=right class="subtitolo"> 
+Ean:
+</td>
+<td align=left>
+<input type="text" name="vfilean" size="14" maxlenght="14" value="/%Vfilean%/" onkeyup="this.value=this.value.toUpperCase();">
+</td>
+</tr>
+<tr>
+<td align=right class="subtitolo"> 
+Cod.Art.:
+</td>
+<td align=left>
+<input type="text" name="vfilmar" size="15" maxlenght="15" value="/%Vfilmar%/" onBlur="this.value=this.value.toUpperCase();" onkeyup="this.value=this.value.toUpperCase();">
+</td>
+</tr>
+<tr>
+<td align=right class="subtitolo"> 
+Famiglia:
+</td>
+<td align=left>
+ <select name="vcodsub" data-placeholder="Scegliere una famiglia." style="width:200px; color: green; font-size:
+ 10px;font-family: verdana;padding: 4px;border-radius: 7px;" tabindex="2" class="subSelect">                   
+ <OPTION VALUE="0" class="static" selected>Tutti</OPTION>                                                      
+<as400>selsubd                                                                                                      
+ <OPTION VALUE="/%SCODsub%/" class="sub_/%sdipsub%/"  /%selected%/>/%SCODsub%/ /%SDESsub%/</OPTION>                          
+<as400>finsubd                                                                                                      
+ </SELECT>                                                                                                     
+ </td>
+</tr>
+</table>
+
+</td>
+<td align=center  valign=top> 
+
+<table border=0 width="100%">
+<tr>
+<td align=right class="subtitolo"> 
+Stati:
+</td>
+<td align=left>
+<input type="text" name="vstato1" size="2" maxlenght="2" value="/%vstato1%/" onBlur="this.value=this.value.toUpperCase();" onkeyup="this.value=this.value.toUpperCase();">
+<input type="text" name="vstato2" size="2" maxlenght="2" value="/%vstato2%/" onBlur="this.value=this.value.toUpperCase();" onkeyup="this.value=this.value.toUpperCase();">
+<input type="text" name="vstato3" size="2" maxlenght="2" value="/%vstato3%/" onBlur="this.value=this.value.toUpperCase();" onkeyup="this.value=this.value.toUpperCase();">
+<input type="text" name="vstato4" size="2" maxlenght="2" value="/%vstato4%/" onBlur="this.value=this.value.toUpperCase();" onkeyup="this.value=this.value.toUpperCase();">
+</td>
+</tr>
+<tr>
+<td align=right class="subtitolo"> 
+Assortimento:
+</td>
+<td align=left>
+<input type="text" name="vcodass" size="2" maxlenght="2" value="/%vcodass%/" onBlur="this.value=this.value.toUpperCase();" onkeyup="this.value=this.value.toUpperCase();">
+</td>
+</tr>
+<tr>
+<td align=right class="subtitolo"> 
+Sub-Famiglia:
+</td>
+<td align=left>
+ <select name="vcodgrp" data-placeholder="Scegliere una famiglia." style="width:200px; color: green; font-size:
+ 10px;font-family: verdana;padding: 4px;border-radius: 7px;" tabindex="2" class="grpSelect">                   
+ <OPTION VALUE="0" class="static" selected>Tutti</OPTION>                                                      
+<as400>selgrpm                                                                                                      
+ <OPTION VALUE="/%SCODgrp%/" class="sub_/%ssubgrp%/"  /%selected%/>/%SCODgrp%/ /%SDESgrp%/</OPTION>                          
+<as400>fingrpm                                                                                                      
+ </SELECT>                                                                                                     
+</td>
+</tr>
+</table>
+
+</td>
+<td align=center valign=top> 
+
+<input type="hidden" name="vnumpag" value="00001">
+<input type="hidden" name="vnumrec" value="00000000">
+<input type="hidden" name="vfiltra" value="S">
+
+<table width="100%" border=0>
+<tr>
+<td align=center> 
+<input align=right id="filtra" type="submit" value="Filtra"> 
+</td>
+</form>
+</tr>
+<as400>inipagine
+<tr>
+<td align=center> 
+</td>
+</tr>
+<as400>pagprec
+<form name=formp method=post action="/webdorecap/hricarti.cgi">
+<input type="hidden" name="vfildes" value="/%Vfildes%/">
+<input type="hidden" name="vfilseq" value="/%Vfilseq%/">
+<input type="hidden" name="vfilean" value="/%Vfilean%/">
+<input type="hidden" name="vfilmar" value="/%Vfilmar%/">
+<input type="hidden" name="vcoddip" value="/%Vcoddip%/">
+<input type="hidden" name="vcodsub" value="/%Vcodsub%/">
+<input type="hidden" name="vcodgrp" value="/%Vcodgrp%/">
+<input type="hidden" name="vnumpag" value="/%Vnumpag%/">
+<input type="hidden" name="vnumrec" value="/%Vnumrec%/">
+<tr>
+<td align=center class="testocorsivorosso"> 
+<input align=right type="submit" value="Pag.Prec.">
+</td>
+</tr>
+</form>
+<as400>pagsucc
+<form name=forms method=post action="/webdorecap/hricarti.cgi">
+<input type="hidden" name="vfildes" value="/%Vfildes%/">
+<input type="hidden" name="vfilseq" value="/%Vfilseq%/">
+<input type="hidden" name="vfilean" value="/%Vfilean%/">
+<input type="hidden" name="vfilmar" value="/%Vfilmar%/">
+<input type="hidden" name="vcoddip" value="/%Vcoddip%/">
+<input type="hidden" name="vcodsub" value="/%Vcodsub%/">
+<input type="hidden" name="vcodgrp" value="/%Vcodgrp%/">
+<input type="hidden" name="vnumpag" value="/%Vnumpag%/">
+<input type="hidden" name="vnumrec" value="/%Vnumrec%/">
+<tr>
+<td align=center class="testocorsivorosso"> 
+<input align=right type="submit" value="Pag.Succ.">
+</td>
+</tr>
+</form>
+<as400>finpagine
+<tr>
+<td align=center class="testocorsivorosso"> 
+<span>/%vstrrec%/</span>
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+</div>
+
+
+<table border="0" width="100%">
+<as400>irigat
+<tr>
+<td align=left class="intestazione">
+</td>
+<td align=left class="intestazione">
+Cod.Articolo
+</td>
+<td align=left class="intestazione">
+Descrizione
+</td>
+<td align=left class="intestazione">
+Ean
+</td>
+<td align=left class="intestazione">
+Pz x Ct
+</td>
+<td align=left class="intestazione">
+Stato
+</td>
+</tr>
+
+<as400>iniriga
+<tr bgcolor=/%vbgcolor%/>
+<td class="testocorsivo" style="display: flex; justify-content: center; margin-top: 0.3rem; margin-bottom: 0.3rem;">
+<input type="button" onclick="RiempiValore('/%Vcodart%/','/%Vdesart%/')" style="color: white; background-color: green; border-radius:5px 5px 5px 5px; width:60%; height:30px" value="Scegli" >
+</td>
+<td align=left class="testocorsivo">
+<a onclick="RiempiValore('/%Vcodart%/','/%Vdesart%/')">
+/%Vcodart%/
+</a>
+</td>
+<td align=left class="testocorsivo">
+<a onclick="RiempiValore('/%Vcodart%/','/%Vdesart%/')">
+/%Vdesart%/
+</a>
+</td>
+<td align=left class="testocorsivo">
+<a onclick="RiempiValore('/%Vcodart%/','/%Vdesart%/')">
+/%Vcodean%/
+</a>
+</td>
+<td align=left class="testocorsivo">
+<a onclick="RiempiValore('/%Vcodart%/','/%Vdesart%/')">
+/%Vmplcu%/
+</a>
+</td>
+<td align=left class="testocorsivo">
+<a onclick="RiempiValore('/%Vcodart%/','/%Vdesart%/')">
+/%Vstatoa%/
+</a>
+</td>
+</tr>
+<as400>finriga
+
+</table>
+
+
+<as400>end
+
+<script>
+    function RiempiValore(val1,val2) {
+      var str1 = val1;
+      var str2 = val2;
+      //alert("="+str1+"--"+str2);
+    top.$('#codiceabarre').val(val1)
+	  $("#vcodart",top.document).html(str1);
+	  $("#vvdesag",top.document).html(str2);
+    top.$('.swal2-close').click();
+    top.$('#invia').click()
+	  top.$('#dialog-Mag').dialog('close');
+    }
+</script>
+
+
+</body>
+
+</html>

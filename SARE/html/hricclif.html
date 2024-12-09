@@ -1,0 +1,234 @@
+<as400>top                     **** START HTML
+Content-type: text/html
+Expires: Fri Jan 01 00:00:00 1999
+
+<HTML><HEAD>
+<!-- Jquery -->
+<link type="text/css"         href="/centaurdir/redmond/css/jquery-ui-1.8.17.custom.css" rel="stylesheet" />
+<script type="text/javascript" src="/centaurdir/jquery/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/centaurdir/jquery/js/jquery-ui-1.8.17.custom.min.js"></script>
+<!-- CIS -->
+<link rel="stylesheet" href="/centaurdir/html/stile_cis.css" media="screen" type="text/css">  
+<script type="text/javascript" src="/centaurdir/js2/title.js"></script>                    
+<script type="text/javascript" src="/centaurdir/js2/val_cis.js"></script>                  
+<script type="text/javascript" src="/centaurdir/js2/selid.js"></script>  
+</head>
+
+<body link="green" vlink="green" alink="green" onload=document.form_r.vfildes.focus()>
+
+<script>
+	$(function() {
+		// Tutti i tag button verranno considerati come dei pulsanti
+		$( "button, input:button, input:submit").button();
+	});
+</script>
+
+
+<div class='ui-widget-rettangolo ui-corner-all' style='padding:10px;'>
+<table border=0 width="100%"  valign=top>
+<tr>
+<td align=center valign=top>
+
+<form name=form_r method=post action="/webdorecap/hricclif.cgi">
+  <input type="hidden" name="vuserid"   value="/%Vuserid%/">                     
+  <input type="hidden" name="vpassword" value="/%Vpassword%/">                   
+  <input type="hidden" name="vcodmag"   value="/%vcodmag%/">                     
+
+<table width="100%" border=0 >
+<tr>
+<td align=right class="subtitolo">
+Stringa 1:
+</td>
+<td align=left>
+<input type="text" name="vfildes" id="vfildes" size="20" maxlenght="49" value="/%Vfildes%/" onBlur="this.value=this.value.toUpperCase();" onkeyup="this.value=this.value.toUpperCase();">
+</td>
+<td align=right class="subtitolo">
+Stringa 2:
+</td>
+<td align=left>
+<input type="text" name="vfilseq" id="vfilseq" size="20" maxlenght="49" value="/%Vfilseq%/" onBlur="this.value=this.value.toUpperCase();" onkeyup="this.value=this.value.toUpperCase();">
+</td>
+<td align=right class="subtitolo">
+Card:
+</td>
+<td align=left>
+<input type="text" name="vfilfid" id="vfilfid" size="15" maxlenght="13" value="/%Vfilfid%/">
+</td>
+</tr>
+</table>
+
+</td>
+<td align=center valign=top> 
+
+<input type="hidden" name="vnumpag" value="00001">
+<input type="hidden" name="vnumrec" value="00000000">
+<input type="hidden" name="vfiltra" value="S">
+
+<table width="100%" border=0>
+<tr>
+<td align=center> 
+<input align=right type="submit" value="Filtra"> 
+</td>
+</form>
+</tr>
+<as400>inipagine
+<tr>
+<td align=center> 
+</td>
+</tr>
+<as400>pagprec
+<form name=formp method=post action="/webdorecap/hricclif.cgi">
+  <input type="hidden" name="vuserid"   value="/%Vuserid%/">                     
+  <input type="hidden" name="vpassword" value="/%Vpassword%/">                   
+  <input type="hidden" name="vcodmag"   value="/%vcodmag%/">                     
+<input type="hidden" name="vfildes" value="/%Vfildes%/">
+<input type="hidden" name="vfilseq" value="/%Vfilseq%/">
+<input type="hidden" name="vfilfid" value="/%Vfilfid%/">
+<input type="hidden" name="vnumpag" value="/%Vnumpag%/">
+<input type="hidden" name="vnumrec" value="/%Vnumrec%/">
+<tr>
+<td align=center class="testocorsivorosso"> 
+<input align=right type="submit" value="Pag.Prec.">
+</td>
+</tr>
+</form>
+<as400>pagsucc
+<form name=forms method=post action="/webdorecap/hricclif.cgi">
+  <input type="hidden" name="vuserid"   value="/%Vuserid%/">                     
+  <input type="hidden" name="vpassword" value="/%Vpassword%/">                   
+  <input type="hidden" name="vcodmag"   value="/%vcodmag%/">                     
+<input type="hidden" name="vfildes" value="/%Vfildes%/">
+<input type="hidden" name="vfilseq" value="/%Vfilseq%/">
+<input type="hidden" name="vfilfid" value="/%Vfilfid%/">
+<input type="hidden" name="vnumpag" value="/%Vnumpag%/">
+<input type="hidden" name="vnumrec" value="/%Vnumrec%/">
+<tr>
+<td align=center class="testocorsivorosso"> 
+<input align=right type="submit" value="Pag.Succ.">
+</td>
+</tr>
+</form>
+<as400>finpagine
+<tr>
+<td align=center class="testocorsivorosso"> 
+</td>
+</tr>
+</table>
+
+</td>
+</tr>
+</table>
+</div>
+
+
+<table border="0" width="100%">
+<as400>irigat
+<tr>
+<td align=left class="intestazione">
+</td>
+<td align=left class="intestazione">
+Cod.Cliente
+</td>
+<td align=left class="intestazione">
+Ragione sociale
+</td>
+<td align=left class="intestazione">
+Indirizzo
+</td>
+<td align=left class="intestazione">
+Cap
+</td>
+<td align=left class="intestazione">
+Provincia
+</td>
+<td align=left class="intestazione">
+Localit&agrave;
+</td>
+<td align=left class="intestazione">
+Card
+</td>
+</tr>
+
+<as400>iniriga
+<tr bgcolor=/%vbgcolor%/>
+<td class="testocorsivo" style="display: flex; justify-content: center; margin-top: 0.3rem; margin-bottom: 0.3rem;">
+<input type="button" onclick="RiempiValore(`/%Vcodcli%/`,`/%Vdescli%/`,`/%Vcodfid%/`)" style="color: white; background-color: green;
+border-radius:5px 5px 5px 5px; width:60%; height:30px" value="Scegli" >
+</td>
+<td align=left class="testocorsivo">
+<a onclick="RiempiValore(`/%Vcodcli%/`,`/%Vdescli%/`,`/%Vcodfid%/`)">
+/%Vcodcli%/
+</a>
+</td>
+<td align=left class="testocorsivo">
+<a onclick="RiempiValore(`/%Vcodcli%/`,`/%Vdescli%/`,`/%Vcodfid%/`)">
+/%Vdescli%/
+</a>
+</td>
+<td align=left class="testocorsivo">
+<a onclick="RiempiValore(`/%Vcodcli%/`,`/%Vdescli%/`,`/%Vcodfid%/`)">
+/%Vindcli%/
+</a>
+</td>
+<td align=left class="testocorsivo">
+<a onclick="RiempiValore(`/%Vcodcli%/`,`/%Vdescli%/`,`/%Vcodfid%/`)">
+/%Vcapcli%/
+</a>
+</td>
+<td align=left class="testocorsivo">
+<a onclick="RiempiValore(`/%Vcodcli%/`,`/%Vdescli%/`,`/%Vcodfid%/`)">
+/%Vprocli%/
+</a>
+</td>
+<td align=left class="testocorsivo">
+<a onclick="RiempiValore(`/%Vcodcli%/`,`/%Vdescli%/`,`/%Vcodfid%/`)">
+/%Vloccli%/
+</a>
+</td>
+<td align=left class="testocorsivo">
+<a onclick="RiempiValore(`/%Vcodcli%/`,`/%Vdescli%/`,`/%Vcodfid%/`)">
+/%Vcodfid%/
+</a>
+</td>
+</tr>
+<as400>finriga
+
+</table>
+
+
+<as400>end
+
+<script>
+function RiempiValore(val1, val2, val3) {
+    var str1 = val1;
+    var str2 = val2;
+    var card = val3;
+
+    
+    var isCard = sessionStorage.getItem('card') === "Y";
+    var hasFattura = sessionStorage.getItem('hfattcas');
+    
+    if (parent.Swal) {
+      if (isCard) {
+        sessionStorage.setItem('cardNum', card);
+        parent.Swal.close();
+      } else if (hasFattura) {
+        parent.closeFrameFattura(str1, str2);
+        $("#scodcn", top.document).val(str1);
+        $("#sdescl", top.document).html(str2);
+      } else {
+        top.$('#dialog-Cli').dialog('close');
+        funzioneDaInnescare();
+      }
+    } else {
+        console.error("SweetAlert non è definito nel contesto parent.");
+        if (!isCard && !hasFattura) {
+            top.$('#dialog-Cli').dialog('close');
+            funzioneDaInnescare();
+        }
+    }
+}
+</script>
+</body>
+
+</html>

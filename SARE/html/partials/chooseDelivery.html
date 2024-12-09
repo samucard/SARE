@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="row mb-3">
+        <div class="col">
+            <div class="form-group">
+                <select name="typeDelivery" id="typeDelivery" class="form-select"
+                    onchange="paymentMethods.manageDeliveryCost()"></select>
+            </div>
+        </div>
+    </div>
+    <div class="row d-none" id="rowCost">
+        <div class="col-md-6">
+            <div class="form-group row align-items-center">
+                <label for="customCost" class="form-label col-5">Valore</label>
+                <div class="col">
+                    <input type="number" id="customCost" class="form-control" step="0.01" value="0.00" min="0.00"
+                        disabled="true">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group align-items-center m-2">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="editCost" onchange="paymentMethods.manageInputDelivery($(this))">
+                    <label class="form-check-label" for="flexCheckChecked">
+                        Valore Forzato
+                    </label>
+                </div>
+            </div>
+            <div class="container">
+                <h2 id="total"></h2>
+            </div>
+
+            <script>
+
+                $(document).ready(function () {
+                    $('#customCost').on('input', function () {
+                        let value = $(this).val();
+
+                        // Sostituisce la virgola con un punto
+                        value = value.replace(',', '.');
+
+                        // Limita il numero di decimali a due
+                        if (/^\d+(\.\d{0,2})?$/.test(value)) {
+                            $(this).val(value);
+                        } else {
+                            // Se supera i due decimali, tronca il valore
+                            let truncatedValue = value.match(/^\d+(\.\d{0,2})?/)[0];
+                            $(this).val(truncatedValue);
+                        }
+                    });
+
+                    // Assicura che il valore abbia sempre due cifre decimali quando l'input perde il fuoco
+                    $('#customCost').on('blur', function () {
+                        let value = $(this).val();
+
+                        // Sostituisce la virgola con un punto
+                        value = value.replace(',', '.');
+
+                        // Verifica che il valore sia un numero valido e che non sia vuoto
+                        if (!isNaN(value) && value !== '') {
+                            // Arrotonda a due cifre decimali, aggiungendo zeri se necessario
+                            value = parseFloat(value).toFixed(2);
+                        }
+
+                        $(this).val(value);
+                    });
+                });
+            </script>

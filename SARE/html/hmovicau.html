@@ -1,0 +1,255 @@
+<as400>top                     **** START HTML
+Content-type: text/html
+Expires: Fri Jan 01 00:00:00 1999
+
+<HTML><HEAD>
+<!-- Jquery -->
+<link type="text/css"         href="/centaurdir/redmond/css/jquery-ui-1.8.17.custom.css" rel="stylesheet" />
+<script type="text/javascript" src="/centaurdir/jquery/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="/centaurdir/jquery/js/jquery-ui-1.8.17.custom.min.js"></script>
+
+<!-- Swal fire -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- CIS -->
+<link rel="stylesheet" href="/centaurdir/html/stile_cis.css" media="screen" type="text/css">  
+<script type="text/javascript" src="/centaurdir/js2/title.js"></script>                    
+<script type="text/javascript" src="/centaurdir/js2/val_cis.js"></script>                  
+<script type="text/javascript" src="/centaurdir/js2/selid.js"></script>  
+</head>
+
+<body link="green" vlink="green" alink="green">
+
+<style>
+  .sticky-header {
+       position: sticky;
+       top: 0;
+       background-color: #f1f1f1; /* Cambia il colore di sfondo se necessario */
+       z-index: 1; /* Mantiene la testata sopra il resto della tabella */
+     }
+     
+     .sticky-footer {
+     	position: sticky;
+     	bottom: 0;
+     	background-color: #f1f1f1; /* Cambia il colore di sfondo se necessario */
+     	z-index: 1;
+     }
+
+	 .testoCelle{
+		color: green;
+		font-style: oblique;
+		font-family: 'trebuchet ms', trebuchet, arial, verdana, helvetica, sans-serif;
+	 }
+
+	 .rigaStyle{
+		height: 2rem !important;
+	 }
+
+	 input[type=number]{
+		height: 2rem;
+	 }
+</style>
+
+<script>
+	$(function() {
+		// Tutti i tag button verranno considerati come dei pulsanti
+		$( "#filtra").button();
+	});
+</script>
+
+
+ <script type="text/javascript" defer="defer">                            
+  function cascadeSelect(parent, child){                                  
+    var childOptions = child.find('option:not(.static)');                 
+     child.data('options',childOptions);                                  
+    parent.change(function(){                                             
+  //alert('ciao'+this.value);                                             
+     childOptions.remove();                                               
+     child                                                                
+      .append(child.data('options').filter('.sub_' + this.value))         
+      .change();                                                          
+    })                                                                    
+                                                                          
+    childOptions.not('.static, .sub_' + parent.val()).remove();           
+                                                                          
+  }                                                                       
+                                                                          
+  $(function(){                                                           
+         
+  });                                                 
+ </script>                                            
+
+<form name="freso" id="freso" method="post" action="/webdorecap/hresstor.cgi">
+<input type="hidden" value="/%vuserid%/" name="vuserid">
+<input type="hidden" value="/%vnewreg%/" name="vnumreg">
+<input type="hidden" value="/%vnumre1%/" name="vnewreg">
+<input type="hidden" value="/%vpasswo%/" name="vpasswo">
+<input type="hidden" value="/%vtipres%/" name="vtipres"  id="vtipres">
+</form>
+
+<form name="formx" method="post" action="/webdorecap/hmovicau.cgi">
+<input type="hidden" value="/%vuserid%/" name="vuserid">
+<input type="hidden" value="/%vnumreg%/" name="vnumreg">
+<input type="hidden" value="S" name="vaggior">
+<input type="hidden" id="vchiudi" value="/%vchiudi%/" name="vchiudi">
+
+
+<div class='ui-widget-rettangolo ui-corner-all cascadeTest' style='padding:10px;'>
+<table border=0 width="100%"  valign=top>
+<tr>
+<td align=center valign=top>
+</td>
+</tr>
+</table>
+</div>
+
+
+<table border="0" width="100%">
+<tr class="sticky-header">
+<td align=left class="intestazione">
+Cod.Cauzione
+</td>
+<td align=left class="intestazione">
+Descrizione
+</td>
+<td align=left class="intestazione">
+Prezzo Unitario
+</td>
+<td align=center class="intestazione">
+Saldo
+</td>
+<td align=center class="intestazione">
+Qta<br>Inviate
+</td>
+<td align=center class="intestazione">
+Qta<br>Rese
+</td>
+<td align=center class="intestazione">
+Qta<br>Accr.
+</td>
+</tr>
+
+<as400>iniriga
+<tr bgcolor=/%vbgcolor%/ class="rigaStyle">
+<td align=left class="testoCelle">
+/%VCAUZI%/
+</td>
+<td align=left class="testoCelle">
+	/%VDECAU%/
+</td>
+<td align=left class="testoCelle">
+/%VPREZZ%/
+</td>
+<td align=center class="testoCelle">
+/%VSALDX%/
+</td>
+<td align=center class="testoCelle">
+<input type="number" value="/%VQTAIN%/" maxlenght="5" size="5" /%readoin%/ name="VQTAIN" id="VQTAIN/%vr%/">
+</td>
+<td align=center class="testoCelle">
+<input type="number" value="/%VQTARE%/" maxlenght="5" size="5" /%readore%/ name="VQTARE" id="VQTARE/%vr%/">
+</td>
+<td align=center class="testoCelle">
+/%VQTAAC%/
+</td>
+</tr>
+<input type="hidden" value="/%vcauzi%/" name="vcauzi" id="vcauzi/%vr%/">
+<input type="hidden" value="/%vqtaac%/" name="vqtaac" id="VQTAAC/%vr%/">
+<input type="hidden" value="/%VSALDX%/" name="VSALDX" id="VSALDX/%vr%/">
+<as400>finriga
+
+</table>
+
+<div class='ui-widget-rettangolo ui-corner-all cascadeTest sticky-footer' style='padding:10px;'>
+<table border=0 width="100%"  valign=top>
+<tr>
+<td align=center valign=top>
+<input type=button value="Conferma" onclick="r_st();"                                                            
+style="color: white; background-color: green; border-radius:05px 05px 05px 05px; width:100px; height:30px" >   
+</td>
+</tr>
+</table>
+</div>
+
+
+</form>
+
+
+<as400>end
+
+<script>
+	 function r_st() {
+	 	errrig='n';
+	 	for(i=1; i<9999; i++) {   
+  	riga=i;
+  	if (document.getElementById("vcauzi"+riga) != null) {
+  		inv=parseInt(document.getElementById("VQTAIN"+i).value);
+  		if (isNaN(inv)) {
+  			inv=0;
+  		}	                 
+  		res=parseInt(document.getElementById("VQTARE"+i).value);                 
+  		if (isNaN(res)) {
+  			res=0;
+  		}	                 
+  		sal=parseInt(document.getElementById("VSALDX"+i).value);    
+  		if (isNaN(sal)) {
+  			sal=0;
+  		}	   
+  		if ((res>(inv+sal)) && (res>0)) {	              
+				errrig='s';
+  		}	   
+	 }         
+	 }         
+		if (errrig=='s') {
+			showPopup("Reso superiore al saldo!", "", "error", false, true)
+	 	}     
+
+		if (errrig=='n') {                           	                                                                   
+			showPopup('Vuoi confermare?', "", "info", true)
+	 	}         
+ }
+
+ function showPopup(titolo, messaggio, icona, btnConf = false, btnClose = false, txtBtnConf = "Conferma") {
+	Swal.fire({
+		title: titolo,
+		text: messaggio,
+		icon: icona,
+		width: "50%",
+		showConfirmButton: btnConf,
+		showCloseButton: btnClose,
+		confirmButtonText: txtBtnConf,
+	}).then((result) => {
+		if (result.isConfirmed) {
+			// Invia il form formx tramite AJAX
+			$.ajax({
+				type: 'POST',
+				url: document.formx.action,
+				data: $(document.formx).serialize(),
+				success: function(response) {
+					// Operazioni da eseguire dopo l'invio di formx
+					if ($('#vtipres').val() !== "") {
+						document.freso.submit(); // Invia il secondo form
+					} else {
+						sessionStorage.setItem('confermaHmovicau', "S");
+
+						// Chiudi la modale SweetAlert nel parent
+						if (parent.Swal) {
+							parent.Swal.close();
+						} else {
+							console.error("SweetAlert non è definito nel contesto parent.");
+						}
+					}
+				},
+				error: function(error) {
+					console.error('Errore durante l\'invio del form:', error);
+				}
+			});
+		}
+	});
+}
+</script>
+
+
+</body>
+
+</html>

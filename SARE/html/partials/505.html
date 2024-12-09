@@ -1,0 +1,17 @@
+<input type="hidden" name="codPag" id="codPag"  value="505">
+
+<div class="container justify-content-center mt-2 d-block" id="divAssegno">
+    <div class="row justify-content-center align-items-center mb-3">
+        <span class="mx-2 totAssegno">Totale Assegno:</span>
+        <input type="number" name="assegnoVal" id="assegnoVal">
+        <span class="totContanti">&euro;</span> <!-- Usa &euro; per il simbolo dell'euro -->
+        <button class="btn btn-primary mx-3" onclick="checkTotals()" id="assegnoConfModBtn">Conferma Importo</button>
+    </div>
+    <div class="row justify-content-center align-items-center">
+        <div class="row justify-content-center align-items-center" id="rowDocument">
+            <button class="btn btn-success" onclick="generateDocument()" id="documentBtn" disabled>
+                <i class="fas fa-file-alt"></i> Emetti documento
+              </button>
+        </div>
+    </div>
+</div>
